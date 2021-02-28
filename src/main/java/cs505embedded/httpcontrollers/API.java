@@ -72,7 +72,17 @@ public class API {
         }
         return Response.ok(responseString).header("Access-Control-Allow-Origin", "*").build();
     }
-
+    
+    public HashMap<String, Integer> countVisitsPerIP(List<Map<String,String>> records) {
+    	 HashMap<String, Integer> map = new HashMap<String, Integer>();
+    	 
+    	 for (Map<String, String> map : records) { //records = accessMapList
+    		 String ip = map.get("remote_ip");
+    		 if (!map.keySet().contains(ip)) map.put(ip, 1);
+    		 else map.put(ip, map.get(ip)+1);
+    	 }
+    	 return map;
+        
     @GET
     @Path("/getaccesslog")
     @Produces(MediaType.APPLICATION_JSON)
@@ -92,7 +102,10 @@ public class API {
 
             //get accesslog data
             List<Map<String,String>> accessMapList = Launcher.dbEngine.getAccessLogs();
-            responseString = gson.toJson(accessMapList);
+            responseString = gson.toJson(countVisitsPerIP(accessMapList));
+            for (Map<String, String> map :accessMapList){
+                
+            } 
 
 
         } catch (Exception ex) {
