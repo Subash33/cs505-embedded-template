@@ -76,8 +76,8 @@ public class API {
     public HashMap<String, Integer> countVisitsPerIP(List<Map<String,String>> records) {
     	 HashMap<String, Integer> map = new HashMap<String, Integer>();
     	 
-    	 for (Map<String, String> map : records) { //records = accessMapList
-    		 String ip = map.get("remote_ip");
+    	 for (Map<String, String> tmap : records) { //records = accessMapList
+    		 String ip = tmap.get("remote_ip");
     		 if (!map.keySet().contains(ip)) map.put(ip, 1);
     		 else map.put(ip, map.get(ip)+1);
     	 }
