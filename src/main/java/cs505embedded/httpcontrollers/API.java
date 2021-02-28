@@ -103,9 +103,6 @@ public class API {
             //get accesslog data
             List<Map<String,String>> accessMapList = Launcher.dbEngine.getAccessLogs();
             responseString = gson.toJson(countVisitsPerIP(accessMapList));
-            for (Map<String, String> map :accessMapList){
-                
-            } 
 
 
         } catch (Exception ex) {
