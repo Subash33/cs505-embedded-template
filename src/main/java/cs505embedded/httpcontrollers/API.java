@@ -73,13 +73,7 @@ public class API {
         return Response.ok(responseString).header("Access-Control-Allow-Origin", "*").build();
     }
     
-        
-    @GET
-    @Path("/getaccesslog")
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response getAccessLog() {
-        
-        public HashMap<String, Integer> countVisitsPerIP(List<Map<String,String>> records) {
+    public HashMap<String, Integer> countVisitsPerIP(List<Map<String,String>> records) {
     	 HashMap<String, Integer> map = new HashMap<String, Integer>();
     	 
     	 for (Map<String, String> tmap : records) { //records = accessMapList
@@ -89,6 +83,12 @@ public class API {
     	 }
     	 return map;
     }
+        
+    @GET
+    @Path("/getaccesslog")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getAccessLog() {
+        
         String responseString = "{}";
         try {
 
